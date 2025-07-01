@@ -26,7 +26,8 @@ def upgrade():
 
     with op.batch_alter_table('users', schema=None) as batch_op:
         batch_op.add_column(sa.Column('email', sa.String(), nullable=False))
-        batch_op.create_unique_constraint(None, ['email'])
+        batch_op.create_unique_constraint('uq_users_email', ['email'])
+
 
     # ### end Alembic commands ###
 
